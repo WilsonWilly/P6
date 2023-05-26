@@ -23,6 +23,11 @@ const removeAndSetNewClass = (querySelectorAll, elementToActivate, newClass) => 
 
 const divGallery = document.getElementById('gallery')
 const divCategories = document.getElementById('categories')
+const aLogin = document.getElementById('login')
+
+aLogin.addEventListener('click', () => {
+  localStorage.removeItem('token')
+})
 
 const API_URL = 'http://localhost:5678/api'
 
@@ -79,6 +84,11 @@ const init = async () => {
 
   displayProjects(projects)
   displayCategories(projects)
+
+  console.log('token:', localStorage.token)
+  if (localStorage.token) {
+    aLogin.innerHTML = 'logout'
+  }
 }
 
 init()
